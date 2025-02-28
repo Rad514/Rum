@@ -1,1 +1,33 @@
-
+<!doctype html>
+<html lang="ru"> 
+ <head></head> 
+ <body> 
+  <h1> Сайт в разработке </h1> 
+  <div> 
+   <br> Rum1. :) 
+  </div> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Управление сотрудниками</title> 
+  <link rel="stylesheet" href="styles.css"> 
+  <div class="container"> 
+   <h1>Управление сотрудниками</h1> 
+   <div class="input-section"> 
+    <input type="text" id="employeeNameInput" placeholder="Введите имя сотрудника"> <button id="addEmployee">Добавить сотрудника</button> <button id="addEmployee">Растрелять сотрудника</button> 
+   </div> 
+   <h2>Список сотрудников</h2> 
+   <ul id="employeeList"></ul> 
+   <h2>График смен</h2> <button id="generateScheduleButton">Сгенерировать график</button> 
+   <table> 
+    <thead> 
+     <tr> 
+      <th>День</th> 
+      <th>Мастер оператор</th> 
+     </tr> 
+    </thead> 
+    <tbody id="scheduleBody"></tbody> 
+   </table> 
+  </div> 
+  <script src="script.js"></script> 
+ </body>
+</html>
