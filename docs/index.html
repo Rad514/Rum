@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ru"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Планирование смен на месяц</title> 
+ </head> 
+ <body> 
+  <h2>Планирование смен на месяц</h2> <label for="month">Выберите месяц:</label> 
+  <input type="month" id="month" required> 
+  <div id="shiftsContainer"></div> <button id="addShift">Добавить смену</button> <button id="submitPlan">Сохранить план смен</button> 
+  <script>
+    const shiftsContainer = document.getElementById('shiftsContainer');
+    
+    document.getElementById('addShift').addEventListener('click', function() {
+      const shiftDiv = document.createElement('div');
+      shiftDiv.innerHTML = `
+        <label>Номер смены:</label>
+        <input type="text" required>
+        <label>Дата:</label>
+        <input type="date" required>
+        <label>Время открытия:</label>
+        <input type="time" required>
+        <label>Отдел:</label>
+        <select required>
+          <option value="розлива">Отдел розлива</option>
+          <option value="производства">Отдел производства</option>
+          <option value="упаковки">Отдел упаковки</option>
+        </select>
+        <label>Оборудование:</label>
+        <input type="text" required>
+        <button class="removeShift">Удалить смену</button>
+      `;
+      shiftsContainer.appendChild(shiftDiv);
+    });
+
+    shiftsContainer.addEventListener('click', function(event) {
+      if (event.target.classList.contains('removeShift')) {
+        event.target.parentNode.remove();
+      }
+    });
+
+    document.getElementById('submitPlan').addEventListener('click', function() {
+      const shifts = [];
+      const shiftDivs = shiftsContainer.children;
+      for (let div of shiftDivs) {
+        const shiftData = {
+          shiftNumber: div.querySelector('input[type="text"]').value,
+          date: div.querySelector('input[type="date"]').value,
+          time: div.querySelector('input[type="time"]').value,
+          department: div.querySelector('select').value,
+          equipment: div.querySelector('input[type="text"]').value,
+        };
+        shifts.push(shiftData);
+      }
+      console.log('План смен:', shifts);
+      alert('План смен успешно сохранен! Проверьте консоль для деталей.');
+    });
+  </script> 
+ </body>
+</html>
